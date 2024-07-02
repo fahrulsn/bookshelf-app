@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>My Bookshelf</title>
+  </head>
+  <body>
+
+    <header>
+      <div id="title">
+        <h1>My Bookshelf</h1>
+      </div>
+      <div id="search-book">
+        <form id="search-form">
+          <input placeholder="Cari..." type="text" id="search-book-title">
+          <button id="search-btn" type="submit"><i data-feather="search"></i></button>
+        </form>
+      </div>
+      <div id="add-buttons">
+        <button id="add-btn" onclick="showAddBookForm()"><i data-feather="plus"></i></button>
+      </div>
+    </header>
+
+    <section class="bookshelf">
+      <div class="shelf">
+        <div id="uncomplete-title" class="shelf-title">
+          <h3>Belum Dibaca</h3>
+        </div>
+        <div id="book-uncomplete"></div>
+      </div>
+      <div class="shelf">
+        <div id="complete-title" class="shelf-title">
+          <h3>Sudah Dibaca</h3>
+        </div>
+          <div id="book-complete"></div>
+      </div>
+    </section>
+    <div id="layer"></div>
+
+    <section class="input_section">   
+      <h2>Masukkan Buku Baru</h2>
+      <h3 class="close-btn">&#10005</h3>
+      <form id="input-book">
+        <div class="input">
+          <label for="input-book-title">Judul</label>
+          <input id="input-book-title" type="textarea" required />
+        </div>
+        <div class="input">
+          <label for="input-book-author">Penulis</label>
+          <input id="input-book-author" type="text" required />
+        </div>
+        <div class="input">
+          <label for="input-book-year">Tahun</label>
+          <input id="input-book-year" type="number" required />
+        </div>
+        <div class="input_inline">
+          <label for="input-book-complete">Selesai dibaca</label>
+          <input id="input-book-complete" type="checkbox" />
+        </div>
+        <div class="form-btn">
+          <button id="reset-form" onclick="resetForm()">Reset form</button>
+          <button id="book-submit" type="submit">Masukkan Buku ke rak</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="edit-book" class="edit-form" >
+      <h2>Edit Book</h2>
+      <h3 class="close-btn">&#10005</h3>
+      <form id="edit-book-form">
+        <div class="input">
+          <label for="edit-book-title">Judul</label>
+          <input id="edit-book-title" type="text" required />
+        </div>
+        <div class="input">
+          <label for="edit-book-author">Penulis</label>
+          <input id="edit-book-author" type="text" required />
+        </div>
+        <div class="input">
+          <label for="edit-book-year">Tahun</label>
+          <input id="edit-book-year" type="number" required />
+        </div>
+        <div class="input_inline">
+          <label for="edit-book-complete">Selesai dibaca</label>
+          <input id="edit-book-complete" type="checkbox" />
+        </div>
+        <div class="form-btn">
+          <button id="reset-form" onclick="resetForm()">Reset form</button>
+          <button id="edit-book-submit" type="submit">Simpan Perubahan</button>
+        </div>
+      </form>
+    </section>
+    <section id="custom-dialog">
+      <div class="delete-dialog">
+        <p>Anda yakin ingin menghapus buku ini?</p>
+        <p id="on-delete-title"></p>
+        <button id="confirm-delete">Ya</button>
+        <button id="cancel-delete">Tidak</button>
+      </div>
+    </section>
+    <script>
+      feather.replace();
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>

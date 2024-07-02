@@ -1,0 +1,387 @@
+:root {
+  --dark: rgb(51, 67, 82);
+  --bg: rgb(4, 13, 45);
+  --light-blue: rgb(221, 228, 236);
+  --light-green: rgba(227, 237, 229, 0.2);
+  --light-purple: rgba(234, 230, 244, 0.2);
+  --blue: rgb(0, 122, 255);
+  --green: rgba(76, 218, 100);
+  --purple: rgb(103, 62, 180);
+  --dark-blue: rgb(51, 67, 82);
+  --dark-green: rgb(41, 64, 44);
+  --dark-purple: rgb(60, 51, 78);
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  outline: 0;
+  border: none;
+  text-decoration: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  color: var(--dark);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg);
+}
+
+header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 15vw;
+}
+header #title {
+  width: 50%;
+  font-size: 1.8rem;
+  padding: 7%;
+  color: var(--light-blue);
+}
+header #add-buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-left: 2%;
+}
+header #add-buttons button {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+#add-buttons #add-btn {
+  padding: 1rem 2rem;
+  background-color: var(--blue);
+  color: var(--light-blue);
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+#add-buttons #add-btn:hover {
+  background-color: var(--light-blue);
+  color: var(--blue);
+}
+#search-book {
+  color: var(--light-blue);
+  display: flex;
+  width: 35%;
+  padding-left: 4%;
+}
+#search-book #search-form {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  position: relative;
+}
+
+#search-book #search-form input {
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+  width: 100%;
+  font-size: 1.2rem;
+}
+#search-book #search-form button {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+#search-book #search-form #search-btn {
+  padding: 0.6rem 0.6rem;
+  background-color: var(--blue);
+  color: var(--light-blue);
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: 0.5s ease;
+  position: absolute;
+  top: 0.35rem;
+  right: 0.5rem;
+}
+
+.input_section,
+.edit-form {
+  padding: 2rem;
+  flex-direction: column;
+  position: fixed;
+  background-color: var(--light-blue);
+  width: 30%;
+  top: 30%;
+  left: 35%;
+  visibility: hidden;
+  opacity: 0;
+  border-radius: 2rem;
+  transform: scale(0.8);
+}
+.input_section.active,
+.edit-form.active {
+  opacity: 1;
+  transform: scale(1);
+  visibility: visible;
+  transition: 0.3s ease;
+}
+.input_section #input-book,
+.edit-form #edit-book-form {
+  flex: 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  row-gap: 1.2rem;
+}
+.input_section #input-book .input,
+.edit-form #edit-book-form .input {
+  display: flex;
+  flex-direction: column;
+}
+.form-btn {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  bottom: -60px;
+  left: 0;
+}
+.form-btn #reset-form {
+  font-weight: bold;
+  font-size: 1rem;
+  background-color: rgba(0, 0, 0, 0);
+  color: var(--light-blue);
+  cursor: pointer;
+  padding: 3% 4%;
+  border-radius: 2rem;
+}
+.form-btn #reset-form:hover {
+  background-color: var(--light-blue);
+  color: var(--dark-blue);
+  transition: 0.5s ease;
+}
+.form-btn #book-submit,
+#edit-book-submit {
+  font-weight: bold;
+  font-size: 1rem;
+  background-color: var(--blue);
+  color: white;
+  padding: 0.8rem 1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+}
+.input_section #input-book input,
+.edit-form #edit-book-form input {
+  padding: 6px 10px;
+  border-radius: 1rem;
+}
+.bookshelf {
+  width: 90%;
+  margin: auto;
+  height: 100%;
+  display: flex;
+  padding-bottom: 2rem;
+  justify-content: space-evenly;
+}
+.bookshelf .shelf {
+  width: 48%;
+}
+.bookshelf .shelf .shelf-title {
+  padding: 0.5rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+}
+.bookshelf .shelf #uncomplete-title {
+  background-color: var(--purple);
+  color: var(--light-blue);
+}
+.bookshelf .shelf #complete-title {
+  background-color: var(--green);
+  color: var(--dark-green);
+}
+
+.bookshelf .shelf .book {
+  padding: 1rem 3rem 1rem 1.3rem;
+  border-radius: 1rem;
+  margin-bottom: 0.4rem;
+  position: relative;
+  word-wrap: break-word;
+  color: var(--light-blue);
+  transition: 0.5s ease;
+}
+
+.bookshelf .shelf #book-uncomplete .book {
+  border-bottom: 2px solid var(--light-purple);
+}
+.bookshelf .shelf #book-uncomplete .book:hover {
+  background-color: var(--light-purple);
+  box-shadow: 0px 0px 2rem var(--light-purple);
+}
+
+.bookshelf .shelf #book-complete .book {
+  border-bottom: 2px solid var(--light-green);
+}
+.bookshelf .shelf #book-complete .book:hover {
+  background-color: var(--light-green);
+  box-shadow: 0px 0px 2rem var(--light-green);
+}
+
+.bookshelf .shelf #book-uncomplete:hover .book:not(:hover),
+#book-complete:hover .book:not(:hover) {
+  opacity: 0.3;
+}
+.bookshelf .shelf .book .book-btn {
+  visibility: hidden;
+  align-items: center;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  row-gap: 0.5rem;
+  right: -1rem;
+  top: 1rem;
+  height: calc(100% - 2rem);
+  opacity: 0;
+  transition: 0.5s ease;
+}
+.bookshelf .shelf .book .book-btn .edit-icon:hover,
+.uncompleted:hover,
+.completed:hover {
+  outline: 2px solid var(--light-purple);
+}
+.bookshelf .shelf .book .book-btn .delete-icon:hover {
+  outline: 2px solid rgba(255, 0, 0, 0.5);
+}
+.bookshelf .shelf .book:hover .book-btn {
+  visibility: visible;
+  right: 1rem;
+  opacity: 1;
+}
+.bookshelf .shelf .book .book-btn .edit-icon,
+.uncompleted,
+.completed {
+  padding: 3px;
+  margin: 2px;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.bookshelf .shelf .book .book-btn .delete-icon {
+  color: red;
+  padding: 3px;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.bookshelf .shelf #book-uncomplete,
+#book-complete {
+  border-radius: 1rem;
+}
+.input_section .close-btn,
+.edit-form .close-btn {
+  position: absolute;
+  right: 0px;
+  top: -50px;
+  cursor: pointer;
+  font-weight: bolder;
+  background-color: var(--light-blue);
+  padding: 8px;
+  border-radius: 2rem;
+  line-height: 1;
+  font-size: 1rem;
+}
+.input_section h2,
+.edit-form h2 {
+  position: absolute;
+  top: -50px;
+  left: 5px;
+  color: var(--light-blue);
+}
+.layer {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  left: 0;
+  top: 0;
+  display: none;
+}
+#custom-dialog {
+  position: fixed;
+  width: 30%;
+  top: 35%;
+  left: 35%;
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(0.8);
+}
+#custom-dialog.active {
+  visibility: visible;
+  transform: scale(1);
+  opacity: 1;
+  transition: 0.3s ease;
+}
+.delete-dialog {
+  background-color: var(--light-blue);
+  padding: 2rem;
+  border-radius: 2rem;
+  text-align: center;
+}
+.delete-dialog #cancel-delete {
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: var(--blue);
+  color: var(--light-blue);
+  padding: 1rem;
+  margin-right: 1rem;
+  width: 45%;
+  border-radius: 2rem;
+  position: absolute;
+  bottom: -4rem;
+  right: 0;
+  cursor: pointer;
+}
+.delete-dialog #confirm-delete {
+  font-size: 1rem;
+  color: red;
+  background: none;
+  font-weight: bold;
+  padding: 1rem;
+  margin-left: 1rem;
+  width: 45%;
+  border-radius: 2rem;
+  position: absolute;
+  bottom: -4rem;
+  left: 0;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+.delete-dialog #confirm-delete:hover {
+  background-color: red;
+  color: var(--light-blue);
+}
+.delete-dialog #on-delete-title {
+  font-weight: bold;
+  font-size: 1rem;
+}
+#layer {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s ease;
+}
+#layer.active {
+  opacity: 1;
+  visibility: visible;
+}
